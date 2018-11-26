@@ -332,13 +332,13 @@ post PUT updates) after all driver updates have been received.
 
 
 
-5. [validators.go](validators.go) - 
+### [validators.go](validators.go) - 
 Defines functions for validating the parameters received with GET/PUT requests and 
 extracting them and return to handler functions for processing.
 
 
 
-6. [dispatcher.go](dispatcher.go) - 
+### [dispatcher.go](dispatcher.go) - 
 It aims to provide a framework for asynchronous processing of I/O intensive part of 
 the received PUT requests. HTTP response is sent as soon as the validation is passed. Thereafter,
 update in DB store is done as explained above. 
@@ -348,14 +348,14 @@ Dispatcher removes this blocking call.
 
 
 
-7. [worker.go](worker.go) - 
+### [worker.go](worker.go) - 
 It helps in parallelizing the asynchronous processing of incoming requests by spawning
 multiple threads, each representing a worker. Worker will do th I/O intensive operations thereby
 allowing server to scale to millions of requests per minute.
 
 
 
-8. [dbWrapper.go](dbWrapper.go) - 
+### [dbWrapper.go](dbWrapper.go) - 
 It is responsible for receiving read or write requests from the handlers/workers and makes
 it opaque to the underlying DB store as specified in configuration. Plan was to provide 2 implementations
 \- for in memory(RAM) storage and mysql storage - but currently mysql part has not been
